@@ -25,6 +25,9 @@ public class SortedArrayList {
     }
      
     public void remove(int index){  
+    	if(index > length - 1 || index < 0){
+    		throw new ArrayIndexOutOfBoundsException();
+    	}
         for(int i = index; i< length;i++){
             data[i] = data[i+1];
         }
@@ -32,7 +35,7 @@ public class SortedArrayList {
     }
      
     public int get(int index){
-        if(length==0){
+        if(length==0 || length - 1 < index){
             throw new ArrayIndexOutOfBoundsException();
         }
         return data[index];
@@ -43,8 +46,8 @@ public class SortedArrayList {
     }
      
     public boolean contains(int needle){
-        for(int a : data){
-            if(a == needle){
+        for(int i = 0; i < length; i++){
+            if(data[i] == needle){
                 return true;
             }
         }
