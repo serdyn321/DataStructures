@@ -97,7 +97,12 @@ public class SortedArrayList {
     }
      
     private void expandArray(){
-        int temp[] = new int[data.length*2];
+    	int[] temp;
+    	if(data.length >= Integer.MAX_VALUE/2){
+    		temp = new int[Integer.MAX_VALUE];
+    	}else{
+    		temp = new int[data.length*2];
+    	}
         for(int i = 0; i < this.size();i++){
             temp[i] = data[i];
         }

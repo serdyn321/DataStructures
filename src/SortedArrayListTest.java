@@ -7,10 +7,15 @@ public class SortedArrayListTest {
     @Test
     public void testAdd() {
         SortedArrayList sal = new SortedArrayList();
-         
+        sal.add(55);
+        sal.add(32);
         sal.add(3);
-        System.out.println(sal);
+        sal.add(3);
         assertEquals(3, sal.get(0));
+        assertEquals(3, sal.get(1));
+        assertEquals(32, sal.get(2));
+        assertEquals(55, sal.get(3));
+        
     }
  
     @Test
@@ -24,6 +29,12 @@ public class SortedArrayListTest {
         } catch (ArrayIndexOutOfBoundsException e) {
             // woo hoo!!
         }
+        try {
+            sal.remove(9);
+            fail("error not caught");
+        } catch (ArrayIndexOutOfBoundsException e) {
+            // woo hoo!!
+        }
     }
  
     @Test
@@ -33,6 +44,7 @@ public class SortedArrayListTest {
         assertEquals(3,sal.get(0));
         sal.clear();
         try{
+        	sal.get(5);
             sal.get(0);
             fail("getting a value that doesnt exist");
         }catch (ArrayIndexOutOfBoundsException e){
@@ -75,14 +87,4 @@ public class SortedArrayListTest {
         }
     }
      
-    @Test
-    public void testIfSorted(){
-        SortedArrayList sal = new SortedArrayList();
-         int[] sortedArray = {3,32,55};
-        sal.add(55);
-        sal.add(32);
-        sal.add(3);
-        System.out.println(sal);
-        assertArrayEquals(sortedArray, sal.toArray());
-    }
 }
