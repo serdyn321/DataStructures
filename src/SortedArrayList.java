@@ -6,7 +6,10 @@ public class SortedArrayList {
          
     }
      
-    public void add(int datum){
+    /*
+     * this is a bubble sort( horribly inefficient but works )
+     * 
+     * public void add(int datum){
         if(length == data.length){
             this.expandArray();
         }
@@ -22,7 +25,30 @@ public class SortedArrayList {
                 }
             }
         }
-    }
+    }*/
+    
+    public void add(int datum){
+        if(length == data.length){
+            this.expandArray();
+        }
+        if(length == 0){
+        	data[0] = datum;
+        	length++;
+        	return;
+        }
+        int indexForDatum = 0;
+        for(int i = 0; i < length; i++){
+        	if(datum >= data[i]){
+        		indexForDatum = i+1;
+        	}
+        }
+        	for(int j = length; j > indexForDatum;j--){
+        		data[j] = data[j-1];
+        	}
+        	data[indexForDatum] = datum;
+        	length++;
+        }
+    
      
     public void remove(int index){  
     	if(index > length - 1 || index < 0){
@@ -35,7 +61,7 @@ public class SortedArrayList {
     }
      
     public int get(int index){
-        if(length==0 || length - 1 < index){
+        if(length== 0 || length - 1 < index){
             throw new ArrayIndexOutOfBoundsException();
         }
         return data[index];

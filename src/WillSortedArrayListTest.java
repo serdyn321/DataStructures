@@ -52,6 +52,7 @@ public class WillSortedArrayListTest {
 		sar.add(8);
 		sar.add(1);
 		sar.add(13);
+		System.out.println(sar);
 		assertEquals(1, sar.get(0));
 		assertEquals(1, sar.get(1));
 		assertEquals(2, sar.get(2));
